@@ -17,7 +17,7 @@ public class BankStatementAnalyzer {
 	private static final String RESOURCES = "src/main/resources/";
 	//using interface to decouple
 	
-    public void analyze(final String fileName, final BankStatementParser bankStatementParser) throws IOException {
+    public BankStatementProcessor analyze(final String fileName, final BankStatementParser bankStatementParser) throws IOException {
 
         final Path path = Paths.get(RESOURCES + fileName);
         final List<String> lines = Files.readAllLines(path);
@@ -27,33 +27,62 @@ public class BankStatementAnalyzer {
         final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
         collectSummary(bankStatementProcessor);
+        
+        return bankStatementProcessor;
     }
+    
+    
+    public static double getTotalAmount(final BankStatementProcessor bankStatementProcessor) {
+    	return bankStatementProcessor.calculateTotalAmount();
+    }
+    
+    public static double getMinumumAmount(final BankStatementProcessor bankStatementProcessor) {
+    	return bankStatementProcessor.calculateMinimumAmount();
+    }
+    
+    public static double getMaximumAmount(final BankStatementProcessor bankStatementProcessor) {
+    	return bankStatementProcessor.calculateMaximumAmount();
+    }
+    
+    public static double getTotalInMonth(final BankStatementProcessor bankStatementProcessor, final Month month) {
+    	return bankStatementProcessor.calculateTotalInMonth(month);
+    }
+    
+    public static double getTotalForCategory(final BankStatementProcessor bankStatementProcessor, final String category) {
+    	return bankStatementProcessor.calculateTotalForCategory(category);
+    }
+    
+    public static String getHistogramForMonthOrDescription(final BankStatementProcessor bankStatementProcessor, final String monthOrDescription) {
+    	return bankStatementProcessor.calculateHistogramForMonthOrDescription(monthOrDescription);
+    }
+    
+ 
     
 
     private static void collectSummary(final BankStatementProcessor bankStatementProcessor) {
         System.out.println("The total for all transactions is "
-                + bankStatementProcessor.calculateTotalAmount());
+                + getTotalAmount(bankStatementProcessor));
         
         System.out.println("The minimum for all transactions is "
-                + bankStatementProcessor.calculateMinimumAmount());
+                + getMinumumAmount(bankStatementProcessor));
         
         System.out.println("The maximum for all transactions is "
-                + bankStatementProcessor.calculateMaximumAmount() );
+                + getMaximumAmount(bankStatementProcessor));
 
         System.out.println("The total for transactions in January is "
-                + bankStatementProcessor.calculateTotalInMonth(Month.JANUARY));
+                + getTotalInMonth(bankStatementProcessor, Month.JANUARY));
 
         System.out.println("The total for transactions in February is "
-                + bankStatementProcessor.calculateTotalInMonth(Month.FEBRUARY));
+                + getTotalInMonth(bankStatementProcessor, Month.FEBRUARY));
 
         System.out.println("The total salary received is "
-                + bankStatementProcessor.calculateTotalForCategory("Salary"));
+                + getTotalForCategory(bankStatementProcessor, "Salary"));
         
         System.out.println("Histogram grouped by month is " + "\n"
-                + bankStatementProcessor.calculateHistogramForMonthOrDescription("Month"));
+                + getHistogramForMonthOrDescription(bankStatementProcessor, "Month"));
         
         System.out.println("Histogram grouped by description is " + "\n"
-                + bankStatementProcessor.calculateHistogramForMonthOrDescription("Description"));
+                + getHistogramForMonthOrDescription(bankStatementProcessor, "Description"));
     }
 
 }

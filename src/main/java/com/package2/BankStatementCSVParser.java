@@ -10,7 +10,7 @@ import com.package1.BankTransaction;
 public class BankStatementCSVParser implements BankStatementParser {
 
 	private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-	private static final int EXPECTED_ATTRIBUTES_LENGTH = 3;
+//	private static final int EXPECTED_ATTRIBUTES_LENGTH = 3;
 
 	public BankTransaction parseFrom(final String line) {
 		final String[] columns = line.split(",");

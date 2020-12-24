@@ -21,7 +21,6 @@ public class XmlExporter implements Exporter {
 		result += "</summaryStatistics>";
 		result += "</bankTransactionReport>";
 		result += "</project>";
-		// TODO Auto-generated method stub
 		return result;
 	}
 

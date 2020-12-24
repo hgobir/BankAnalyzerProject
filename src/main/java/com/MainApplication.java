@@ -27,11 +27,9 @@ public class MainApplication {
         double januaryTotal = BankStatementAnalyzer.getTotalInMonth(bankStatementProcessor, Month.JANUARY);
         double februaryTotal = BankStatementAnalyzer.getTotalInMonth(bankStatementProcessor, Month.FEBRUARY);
         double salaryTotal = BankStatementAnalyzer.getTotalForCategory(bankStatementProcessor, "Salary");
-        String monthHistogram = BankStatementAnalyzer.getHistogramForMonthOrDescription(bankStatementProcessor, "Month");
-        String descriptionHistogram = BankStatementAnalyzer.getHistogramForMonthOrDescription(bankStatementProcessor, "Description");
+//        String monthHistogram = BankStatementAnalyzer.getHistogramForMonthOrDescription(bankStatementProcessor, "Month");
+//        String descriptionHistogram = BankStatementAnalyzer.getHistogramForMonthOrDescription(bankStatementProcessor, "Description");
 		
-		
-	
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		
@@ -42,12 +40,9 @@ public class MainApplication {
 		JLabel februaryTransactions = new JLabel("The total for transactions in february is: " + februaryTotal);
 		JLabel salaryTransactions = new JLabel("The total for transactions with salary category is: " + salaryTotal);
 		
-		JLabel histogram1= new JLabel("histogram for month is: " + monthHistogram);
-		JLabel histogram2= new JLabel("histogram for description is: " + descriptionHistogram);
-
-//		JLabel salaryTransactions = new JLabel("The total for transactions with salary category is: " + salaryTotal);
-		
-		
+//		JLabel histogram1= new JLabel("histogram for month is: " + monthHistogram);
+//		JLabel histogram2= new JLabel("histogram for description is: " + descriptionHistogram);
+				
 		panel.setBorder(BorderFactory.createEmptyBorder(240, 240, 80, 240));
 		panel.setLayout(new GridLayout(0, 1));
 		
@@ -67,7 +62,6 @@ public class MainApplication {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		
         final BankStatementAnalyzer bankStatementAnalyzer = new BankStatementAnalyzer();
 

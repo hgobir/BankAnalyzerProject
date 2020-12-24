@@ -1,12 +1,9 @@
 package com.package2;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +11,7 @@ import com.package1.BankTransaction;
 
 public class BankStatementProcessorTest {
 	
-	private List<BankTransaction> testTransactions = new ArrayList<BankTransaction>();
+//	private List<BankTransaction> testTransactions = new ArrayList<BankTransaction>();
 	private BankStatementProcessor statementProcessor = null;
 
 	@Before
